@@ -10,11 +10,13 @@ import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 @Controller
-public class productsController {
+public class ordersController {
 	/*
 	String url="jdbc:mysql://localhost:3306/grosikart";
 	String uname="root";
@@ -24,15 +26,13 @@ public class productsController {
 String url="jdbc:mysql://groswiftdatabase.cw9lueg1gi5v.us-east-2.rds.amazonaws.com:3306/grosikart";
 String uname="admin";
 String pass="uchiha7686";
-	@RequestMapping("/products")
+	@RequestMapping("/orders")
 	public void func(HttpServletRequest request,HttpServletResponse response) throws ClassNotFoundException, SQLException, ServletException, IOException {
 		
-		String category=request.getParameter("category").toString();
-		String subcategory=request.getParameter("subcategory").toString();
-		String category_id=request.getParameter("category_id").toString();
-		String subcategory_id=request.getParameter("subcategory_id").toString();
+		HttpSession session=request.getSession();
+		String user_id=session.getAttribute("id").toString();
 		
-		String query="select * from grosikart_products where subcategory_id="+subcategory_id;
+		String query="select * from grosikart_transactions where user_id="+user_id+" order by trans_id desc";
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con=DriverManager.getConnection(url,uname,pass);
@@ -41,8 +41,7 @@ String pass="uchiha7686";
 		
 		
 		ResultSet rd=st.executeQuery();
-		request.setAttribute("category", category);
-		request.setAttribute("subcategory", subcategory);
+		
 		
 		int size =0;
 		if (rd != null) 
@@ -56,7 +55,7 @@ String pass="uchiha7686";
 
 		request.setAttribute("rd", rd);
 		request.setAttribute("size", size);
-		request.getRequestDispatcher("products.jsp").forward(request, response);
+		request.getRequestDispatcher("orders.jsp").forward(request, response);
 		
 	}
 

@@ -18,17 +18,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class loginController {
+	/*
 	String url="jdbc:mysql://localhost:3306/grosikart";
 	String uname="root";
 	String pass="Prakash1";
+	 */
 	
+String url="jdbc:mysql://groswiftdatabase.cw9lueg1gi5v.us-east-2.rds.amazonaws.com:3306/grosikart";
+String uname="admin";
+String pass="uchiha7686";
 	
 	@RequestMapping("/login")
 public void login(HttpServletRequest request,HttpServletResponse response) throws ClassNotFoundException, SQLException, IOException, ServletException {
 		
 		String phone=request.getParameter("uname");
 		String password=request.getParameter("psw");
-		
+		HttpSession session=request.getSession();
 		String query="select * from grosikart_users where user_phone=? and user_password=?";
 		Class.forName("com.mysql.jdbc.Driver");
 		Connection con=DriverManager.getConnection(url,uname,pass);
@@ -41,24 +46,17 @@ public void login(HttpServletRequest request,HttpServletResponse response) throw
 			ses.setAttribute("id", rd.getString(1));
 			ses.setAttribute("name", rd.getString(2));
 			ses.setAttribute("address", rd.getString(3));
+			ses.setAttribute("phone", rd.getString(4));
+			ses.setAttribute("email", rd.getString(8));
 			
 			System.out.println("Success");
+			session.setAttribute("loginUser", "1");
 			request.getRequestDispatcher("home").forward(request, response);
 		}
 		else {
-			PrintWriter out=response.getWriter();
-			System.out.println("Failure");
-			out.println("<h1>yes i was here</h1>");
-			out.println(" <script src=\"https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js\"></script>");
-			out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>");
-			out.println("<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>");
-			out.println("<script>");
-			out.println("$(document).ready(function(){");
-			out.println("swal ( \"Welcome\" ,  \"Successfull!\" ,  \"error\" );");
-			out.println("});");
-			out.println("</script>");
+			session.setAttribute("loginUser", "2");
 			
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		request.getRequestDispatcher("home").forward(request, response);
 		}
 		
 	}

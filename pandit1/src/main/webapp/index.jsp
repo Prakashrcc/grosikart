@@ -10,11 +10,14 @@
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
         <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="node_modules/bootstrap-social/bootstrap-social.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.0/animate.min.css">
        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  -->    
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    
+        
+         
         <link rel="stylesheet" href="css/styles.css">
+           
         <style>
         
         .problem-row{
@@ -165,6 +168,10 @@ display: inline-block;
     margin-bottom: 7px;
     min-width: 145%;
 }
+.header{
+   
+  }
+
    
     input:focus{
   outline: 1px solid cadetblue;     /* oranges! yey */
@@ -222,15 +229,355 @@ margin-left: 20%;
    bottom: 0;
    font-size:40px;
    width: 100%;
-   background-color: green;
+   
    color: white;
    text-align: center;
+   
+}
+.footer{
+background-color:  #1b1b1b;
+}
+.li{
+    display: block;
+    border-bottom: 1px solid black;
+    width: 98%;
+    margin-left: 1%;
 }
 </style>  
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidebar a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar a:hover {
+  color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #111;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color: #444;
+}
+
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+  
+}
+
+
+@media only screen and (max-width: 1400px) {
+#phoneNav{
+ display: none;
+}
+}
+@media only screen and (max-width: 600px) {
+#main{
+ display: none;
+}
+#phoneNav{
+ display: block;
+}
+}
+
+.wrapper {
+    display: block;
+}
+
+#sidebar {
+    min-width: 250px;
+    max-width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* top layer */
+    z-index: 9999;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    /* full screen */
+    width: 100vw;
+    height: 100vh;
+    /* transparent black */
+    background: rgba(0, 0, 0, 0.7);
+    /* middle layer, i.e. appears below the sidebar */
+    z-index: 998;
+    opacity: 0;
+    /* animate the transition */
+    transition: all 0.5s ease-in-out;
+}
+/* display .overlay when it has the .active class */
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+#dismiss {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    /* top right corner of the sidebar */
+    top: 10px;
+    right: 10px;
+}
+</style>
+<style type="text/css">
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+<style>
+        body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+     background: rgb(115, 134, 213);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+  
+    width: 90%;
+    margin-left: 5%;
+}
+
+.sidenav a:hover {
+  color:  rgb(115, 134, 213);
+  background:white;
+}
+.closebtn:hover{
+	 color: white;
+  background: rgb(115, 134, 213);
+}
+
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  
+}
+.closebtn{
+ width: 100%;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+  .header{
+   display: none;
+  }
+  .header2{
+   display: none;
+  }
+  .bbb{
+   display: block;
+  }
+}
+.bbb{
+	display: none;
+}
+@media only screen and (max-width: 600px) {
+#main{
+ display: none;
+}
+#phoneNav{
+ display: block;
+}
+.header{
+   display: none;
+  }
+	 .header2{
+   display: none;
+  }
+  .bbb{
+   display: block;
+  }
+  .container{
+  margin-top: 60%;
+  }
+}
+</style>
+
     </head>
     <body>
+    
+   
         <jsp:include page="include/header.jsp" />
-
+		
+		
+		
+		<!-- modal for successfull registration -->
+		 <%@ page isELIgnored="false" %>
+       		<%@ page import="java.sql.ResultSet" %>
+       		<%@ page import="java.sql.Connection" %>
+       		<%@ page import="java.sql.*" %>
+			<% HttpSession registerSession=request.getSession();
+				try{
+					String registerValue=registerSession.getAttribute("registerUser").toString();
+					if(registerValue.equals("1")){
+						registerSession.setAttribute("registerUser", "0");
+						out.println(" <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+						out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+						out.println("<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>");
+						out.println("<script>");
+						out.println("$(document).ready(function(){");
+						out.println("swal ( 'Registration Successfull !' ,  'Login to continue' ,  'success' );");
+						out.println("});");
+						out.println("</script>");
+					}
+					else if(registerValue.equals("2")){
+						registerSession.setAttribute("registerUser", "0");
+						out.println(" <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+						out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+						out.println("<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>");
+						out.println("<script>");
+						out.println("$(document).ready(function(){");
+						out.println("swal ( 'Registration Failed !' ,  'Phone No already registered' ,  'error' );");
+						out.println("});");
+						out.println("</script>");
+					}
+					
+					
+					
+				}
+				catch(Exception e){
+					
+				}
+				try{
+					String loginValue=registerSession.getAttribute("loginUser").toString();
+					if(loginValue.equals("1")){
+						registerSession.setAttribute("loginUser", "0");
+						out.println(" <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+						out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+						out.println("<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>");
+						out.println("<script>");
+						out.println("$(document).ready(function(){");
+						out.println("swal ( 'Login Successfull !' ,  '' ,  'success' );");
+						out.println("});");
+						out.println("</script>");
+					}
+					else if(loginValue.equals("2")){
+						registerSession.setAttribute("loginUser", "0");
+						out.println(" <script src='https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.11.4/sweetalert2.all.js'></script>");
+						out.println("<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>");
+						out.println("<script src='https://unpkg.com/sweetalert/dist/sweetalert.min.js'></script>");
+						out.println("<script>");
+						out.println("$(document).ready(function(){");
+						out.println("swal ( 'Login Failed !' ,  'Phone No or Password incorrect' ,  'error' );");
+						out.println("});");
+						out.println("</script>");
+					}
+					
+					
+					
+				}
+				catch(Exception e){
+					
+				}
+				
+				%>
+		
+		<!-- modal for successfull registration -->
 
         <!--  Carousal -->
         <div class="myContainer">
@@ -305,9 +652,15 @@ margin-left: 20%;
            
             
             			<%
+            			/*
             			String url="jdbc:mysql://localhost:3306/grosikart";
-            			String uname="root";
-            			String pass="Prakash1";
+            	    	String uname="root";
+            	    	String pass="Prakash1";
+            	    	 */
+            	    	
+            		String url="jdbc:mysql://groswiftdatabase.cw9lueg1gi5v.us-east-2.rds.amazonaws.com:3306/grosikart";
+            		String uname="admin";
+            		String pass="uchiha7686";
             			
             			String query="select * from grosikart_subcategory where category_id="+rd.getString(1)+" ";
             			System.out.println(query);
@@ -376,28 +729,74 @@ margin-left: 20%;
         <!---->
 
        <jsp:include page="include/footer.jsp" />
-
+	</div>
     </body>
     <script type="text/javascript">
         function searchFunction() {
-            
+           
             var input, filter, ul, li, a,i;
             input=document.getElementById("myinput");
             filter=input.value.toUpperCase();
             ul=document.getElementById("wrapper");
             li=ul.getElementsByClassName("li");
             var count=0;
-            
+           
             if(filter.length !="0"){
                 
                 ul.style.display="block";
+               
             for(i=0; i<li.length; i++){
-                
-                a=li[i].getElementsByTagName("a")[0];
+            	
+                a=li[i].getElementsByTagName("button")[0];
+               
                 
                 if(a.innerHTML.toUpperCase().indexOf(filter) > -1){
                     li[i].style.display="block";
                     count++;
+                  
+                }
+                else{
+                    li[i].style.display="none";
+                    }
+    
+            }
+            if(count==0){
+                document.getElementById("noli").style.display="block";
+                }
+            else{
+                document.getElementById("noli").style.display="none";
+                }
+            
+        }
+        
+        else{
+            ul.style.display="none";
+            }
+    
+        }
+        
+        function searchFunction1() {
+            
+            var input, filter, ul, li, a,i;
+            input=document.getElementById("myinput1");
+            filter=input.value.toUpperCase();
+            ul=document.getElementById("wrapper");
+            li=ul.getElementsByClassName("li");
+            var count=0;
+           
+            if(filter.length !="0"){
+                
+                ul.style.display="block";
+               
+            for(i=0; i<li.length; i++){
+            	
+                a=li[i].getElementsByTagName("button")[0];
+               
+                
+                if(a.innerHTML.toUpperCase().indexOf(filter) > -1){
+                    li[i].style.display="block";
+                    count++;
+                  
                 }
                 else{
                     li[i].style.display="none";
@@ -419,7 +818,11 @@ margin-left: 20%;
     
         }
     
+    
     </script>
+    <script>
+
+</script>
     
 <script>
     // Get the modal
@@ -441,11 +844,15 @@ margin-left: 20%;
         }
     }
     </script>
+   
      
      <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
      <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
      <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
      <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  
 </html>

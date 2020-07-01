@@ -1,8 +1,21 @@
-  <footer class=" footer" style="padding-top: 4%; margin-top:0;">
+  <footer class=" footer dark-bg" style="padding-top: 4%; margin-top:0;">
           <div class="container">
-              <div class="row problem-row">             
-                  <div class="col-4 col-md-4" style="text-align: center;">
-                      
+              <div class="row problem-row">  
+              
+              <div class="col-12 col-md-4" style="">
+              	<h1>Groswift</h1><br>
+              	<h5 style="font-size: 15px; color: gray;">Groswift is an online grocery delivery website. Get wide range of products delivered to your doorSteps! </h5>
+                      <div>
+                         
+                          <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook fa-lg"></i></a>
+                          <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin fa-lg"></i></a>
+                          <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter fa-lg"></i></a>
+                          
+                         
+                      </div>
+                  </div>           
+                  <div class="col-12 col-md-4" style="">
+                      <h3>Important Links</h3>
                       <ul>
                           <li ><a href="#" style="color:white">Home</a></li>
                           <li><a href="#" style="color:white">About Us</a></li>
@@ -12,17 +25,8 @@
                       </ul>
                   </div>
                   
-                  <div class="col-12 col-md-2" style="text-align: center;">
-                      <div>
-                         
-                          <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook fa-lg"></i></a>
-                          <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin fa-lg"></i></a>
-                          <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter fa-lg"></i></a>
-                          
-                         
-                      </div>
-                  </div>
-                  <div class="col-12 col-md-6" style="text-align: center;">
+                  
+                  <div class="col-12 col-md-4" style="">
                     <h5>Our Address</h5>
                     <address>
                   45, Picnic Garden  Road<br>

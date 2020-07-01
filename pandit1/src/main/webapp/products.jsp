@@ -18,6 +18,105 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     
         <link rel="stylesheet" href="css/styles.css">
+         <style>
+        body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+     background: rgb(115, 134, 213);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+  
+    width: 90%;
+    margin-left: 5%;
+}
+
+.sidenav a:hover {
+  color:  rgb(115, 134, 213);
+  background:white;
+}
+.closebtn:hover{
+	 color: white;
+  background: rgb(115, 134, 213);
+}
+
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  
+}
+.closebtn{
+ width: 100%;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+  .header{
+   display: none;
+  }
+  .header2{
+   display: none;
+  }
+  .bbb{
+   display: block;
+  }
+}
+.bbb{
+	display: none;
+}
+@media only screen and (max-width: 600px) {
+#main{
+ display: none;
+}
+#phoneNav{
+ display: block;
+}
+.header{
+   display: none;
+  }
+	 .header2{
+   display: none;
+  }
+  .bbb{
+   display: block;
+  }
+}
+.bbb{
+    background: rgb(35, 35, 35);
+    color: white;
+}
+.myrow{
+width: 98%;
+    padding-bottom: 5px;
+    margin-left: 1%;
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+</style>
         <style>
             body{
                 width: 100%;
@@ -228,6 +327,12 @@ margin-left: 20%;
   position: relative;
   display: inline-block;
 }
+.dropdown1 {
+margin-left: 20%;
+    
+  position: relative;
+  display: inline-block;
+}
 
 .dropdown-content {
   display: none;
@@ -248,12 +353,37 @@ margin-left: 20%;
 width: 100%;
 margin: 0;
 }
+.li{
+    display: block;
+    border-bottom: 1px solid black;
+    width: 98%;
+    margin-left: 1%;
+}
 
 .dropdown-content a:hover {background-color: #ddd;}
 
 .dropdown:hover .dropdown-content {display: block;}
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+.dropdown-content1 a:hover {background-color: #ddd;}
+
+.dropdown:hover1 .dropdown-content {display: block;}
+
+.dropdown:hover1 .dropbtn {background-color: #3e8e41;}
+
+@media only screen and (max-width: 1400px) {
+#phoneNav{
+ display: none;
+}
+}
+@media only screen and (max-width: 600px) {
+#main{
+ display: none;
+}
+#phoneNav{
+ display: block;
+}
+}
 </style>
     </head>
 <body> 
@@ -274,7 +404,7 @@ margin: 0;
        				<h3 style="font-size: 15px;"><%=category %> > <%=subcategory %></h3>
        			</div>
        			<div class="col-12" style="text-align: center;">
-       			  <h2 ><%=subcategory %> (<%=size %>)</h2>
+       			  <h2 ><%=subcategory %> <%=size %></h2>
        			  <hr>
        			</div>
        			</div>
@@ -294,7 +424,7 @@ margin: 0;
         			  	off1=off1-off2;
         			  	 
         			  	 %>
-        			  <div class="col-12 col-md-3 item">
+        			  <div class="col-6 col-md-3 item">
         			  
         			  <h4 style="text-align: end;">  <span class="badge badge-danger">  <i class="fa fa-tag fa-lg"></i> Save Rs <%=off1 %> </span></span></h4>
         			  	 <img src="<%=product.getString(9) %>" style="width:150px; height: 150px; margin-bottom: 3%;">
@@ -375,7 +505,7 @@ margin: 0;
                 ul.style.display="block";
             for(i=0; i<li.length; i++){
                 
-                a=li[i].getElementsByTagName("a")[0];
+            	 a=li[i].getElementsByTagName("button")[0];
                 
                 if(a.innerHTML.toUpperCase().indexOf(filter) > -1){
                     li[i].style.display="block";
@@ -391,6 +521,49 @@ margin: 0;
                 }
             else{
                 document.getElementById("noli").style.display="none";
+                }
+            
+        }
+        
+        else{
+            ul.style.display="none";
+            }
+    
+        }
+    
+    </script>
+     <script type="text/javascript">
+	
+        function searchFunction1() {
+            
+            var input, filter, ul, li, a,i;
+            input=document.getElementById("myinput1");
+            filter=input.value.toUpperCase();
+            ul=document.getElementById("wrapper1");
+            li=ul.getElementsByClassName("li");
+            var count=0;
+            
+            if(filter.length !="0"){
+                
+                ul.style.display="block";
+            for(i=0; i<li.length; i++){
+                
+            	 a=li[i].getElementsByTagName("button")[0];
+                
+                if(a.innerHTML.toUpperCase().indexOf(filter) > -1){
+                    li[i].style.display="block";
+                    count++;
+                }
+                else{
+                    li[i].style.display="none";
+                    }
+    
+            }
+            if(count==0){
+                document.getElementById("noli1").style.display="block";
+                }
+            else{
+                document.getElementById("noli1").style.display="none";
                 }
             
         }

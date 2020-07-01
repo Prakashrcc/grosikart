@@ -33,4 +33,57 @@
   <url-pattern>/logout</url-pattern>
   </servlet-mapping>
   
+   <servlet-mapping>
+  <servlet-name>pandit</servlet-name>
+  <url-pattern>/search</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+  <servlet-name>pandit</servlet-name>
+  <url-pattern>/placeOrder</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  <servlet-name>pandit</servlet-name>
+  <url-pattern>/orders</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  <servlet-name>pandit</servlet-name>
+  <url-pattern>/editProfile</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+  <servlet-name>pandit</servlet-name>
+  <url-pattern>/editAddress</url-pattern>
+  </servlet-mapping>
+  
+   <servlet-mapping>
+  <servlet-name>pandit</servlet-name>
+  <url-pattern>/editPassword</url-pattern>
+  </servlet-mapping>
+  
+   <servlet-mapping>
+  <servlet-name>pandit</servlet-name>
+  <url-pattern>/delivery</url-pattern>
+  </servlet-mapping>
+  
+   <servlet-mapping>
+  <servlet-name>pandit</servlet-name>
+  <url-pattern>/checkout</url-pattern>
+  </servlet-mapping>
+  
+   <servlet-mapping>
+  <servlet-name>pandit</servlet-name>
+  <url-pattern>/addProduct</url-pattern>
+  </servlet-mapping>
+  
+   <servlet-mapping>
+  <servlet-name>pandit</servlet-name>
+  <url-pattern>/addCategory</url-pattern>
+  </servlet-mapping>
+  
+   <servlet-mapping>
+  <servlet-name>pandit</servlet-name>
+  <url-pattern>/addSubcategory</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

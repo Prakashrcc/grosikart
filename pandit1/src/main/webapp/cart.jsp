@@ -19,6 +19,98 @@
     
         <link rel="stylesheet" href="css/styles.css">
         <style>
+        body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+     background: rgb(115, 134, 213);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+  
+    width: 90%;
+    margin-left: 5%;
+}
+
+.sidenav a:hover {
+  color:  rgb(115, 134, 213);
+  background:white;
+}
+.closebtn:hover{
+	 color: white;
+  background: rgb(115, 134, 213);
+}
+
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  
+}
+.closebtn{
+ width: 100%;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+  .header{
+   display: none;
+  }
+  .header2{
+   display: none;
+  }
+  .bbb{
+   display: block;
+  }
+}
+.bbb{
+	display: none;
+}
+@media only screen and (max-width: 600px) {
+#main{
+ display: none;
+}
+#phoneNav{
+ display: block;
+}
+.header{
+   display: none;
+  }
+	 .header2{
+   display: none;
+  }
+  .bbb{
+   display: block;
+  }
+}
+</style>
+        <style>
+        .li{
+    display: block;
+    border-bottom: 1px solid black;
+    width: 98%;
+    margin-left: 1%;
+}
             body{
                 width: 100%;
             }
@@ -307,11 +399,89 @@ h4{
 width: 100%;
 margin: 0;
 }
+#container2 , .container2{
+	    display: block;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 3%;
+    margin: 2%;
+    width:90%;
+}
+.p{
+	font-size: 20px;
+    border-bottom: 1px solid;
+    width: fit-content;
+}
+.in{
+	width: fit-content;
+	margin-top: 2%;
+}
+.con{
+	    margin-top: 3%;
+    padding-left: 10%;
+    padding-right: 10%;
+    /* background: #dbeadb00; */
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 10px;
+    font-size: 20px;
+    color: white;
+    /* border: 1px solid green; */
+    background-image: linear-gradient(to bottom right, #ff0000, #230006);
+}
+.it{
+	    width: fit-content;
+    margin-top: 2%;
+    background: #f7ebeb00;
+    /* color: white; */
+    border-radius: 10px;
+    padding: 1%;
+    padding-left: 3%;
+    padding-right: 3%;
+    color: green;
+    
+    /* border: 1px solid green; */
+}
+.it:hover{
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	
+}
+.bbb{
+display: none;
+}
+
+@media only screen and (max-width: 1400px) {
+#phoneNav{
+ display: none;
+}
+}
+@media only screen and (max-width: 600px) {
+#main{
+ display: none;
+}
+#phoneNav{
+ display: block;
+}
+.header{
+   display: none;
+  }
+	 .header2{
+   display: none;
+  }
+  .bbb{
+   display: block;
+  }
+}
+
 </style>
     </head>
 <body> 
 	<jsp:include page="include/header.jsp"></jsp:include>
-	<div class="container" style="width: 90%;margin-left: 5%;margin-top: 2%;background: #efeeee57;">
+	
+	
+    
+	
+	
+	<div class="container" style="width: 90%;margin-left: 5%;margin-top: 2%;background: #efeeee57;" id="container1">
 	<div class="row" >
 		<div class="col-12" style="padding-left: 4%;
     padding-right: 4%;">
@@ -417,7 +587,10 @@ margin: 0;
             				
             				<div class="row">
             				<div class="col-12">
-            					<a><button class="checkout">CHECKOUT <span class="fa fa-arrow-right"></span></button></a>
+            				<form id="form" action="placeOrder" >
+            				<a class="checkout" onclick="submitForm()
+                				">CHECKOUT <span class="fa fa-arrow-right"></span></a>
+            				</form>
             				</div>
             				</div>
             				
@@ -440,28 +613,40 @@ margin: 0;
             </div>
             </div>
         </div>
-        </div>
-        </div>
+       
 	
 	
 	<!-- cart -->
 	
 	
-	   <div id="no-item" style="display:none">
-        <h1>Cart is Empty..</h1>
-        <h6>Please add some food..</h6>
+	 
+        
+        <!-- div for checkout -->
+        
+        
+        
+        <!-- div for checkout -->
+        
+          <div id="no-item" style="display:none;text-align: center;margin-top: 5%;margin-bottom: 10%;">
+	   	<img src="empty-cart.png">
+        <h3>Cart is Empty..</h3>
+        <h6>Please add some Products..</h6>
         </div>
+        
 	
 	<jsp:include page="include/footer.jsp"></jsp:include>
 
 </body>
 
     <script>
+	
+
     
     var totalprice=0;
     var totalMarked=0;
-    if(localStorage.length==1){
-		document.getElementById("cart-value").style.display="none";
+    if(localStorage.length==1 || localStorage.length<1){
+       
+		document.getElementById("container1").style.display="none";
 		document.getElementById("no-item").style.display="block";
         }
     else{
@@ -636,7 +821,25 @@ margin: 0;
 <script>
     
    
+	function submitForm(){
 
+		
+		
+		localStorage.clear();
+		document.getElementById("form").submit();
+		
+
+		}
+	function deliveryAddress(){
+		
+		
+		
+		return false;
+		
+	//	localStorage.clear();
+	//	document.getElementById("form").submit();
+
+		}
 
 
 
@@ -718,7 +921,9 @@ margin: 0;
                 var discount=totalMarked-totalprice;
                 document.getElementById("discount").innerHTML="Rs "+discount;
 
-				
+ var input=document.getElementById("input"+id);
+                
+                input.setAttribute("value","no");
                 
 			}
             else{
@@ -745,12 +950,13 @@ margin: 0;
                 localStorage.setItem("dish"+id,JSON.stringify(dish) );
                 
                 var input=document.getElementById("input"+id);
-
+                input.setAttribute("value",id+"#"+no.innerHTML);
                 
                
                 
                
-                
+                var inputTotal=document.getElementById("inputTotal");
+				inputTotal.setAttribute("value",totalprice);
              
                 
 				document.getElementById("item-price"+id).innerHTML="Rs "+itemprice;
@@ -804,7 +1010,8 @@ margin: 0;
                 
                 localStorage.setItem("dish"+id,JSON.stringify(dish) );
 
-               
+                var inputTotal=document.getElementById("inputTotal");
+				inputTotal.setAttribute("value",totalprice);
                 
 				document.getElementById("item-price"+id).innerHTML="Rs "+itemprice;
 
@@ -824,5 +1031,48 @@ margin: 0;
 			}
 
 	
+    </script>
+     <script type="text/javascript">
+	
+        function searchFunction() {
+            
+            var input, filter, ul, li, a,i;
+            input=document.getElementById("myinput");
+            filter=input.value.toUpperCase();
+            ul=document.getElementById("wrapper");
+            li=ul.getElementsByClassName("li");
+            var count=0;
+          
+            if(filter.length !="0"){
+                
+                ul.style.display="block";
+            for(i=0; i<li.length; i++){
+                
+            	 a=li[i].getElementsByTagName("button")[0];
+                
+                if(a.innerHTML.toUpperCase().indexOf(filter) > -1){
+                    li[i].style.display="block";
+                    count++;
+                }
+                else{
+                    li[i].style.display="none";
+                    }
+    
+            }
+            if(count==0){
+                document.getElementById("noli").style.display="block";
+                }
+            else{
+                document.getElementById("noli").style.display="none";
+                }
+            
+        }
+        
+        else{
+            ul.style.display="none";
+            }
+    
+        }
+    
     </script>
 </html>
